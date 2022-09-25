@@ -1,0 +1,2 @@
+fn sayHello():
+    print("Hello World!")
