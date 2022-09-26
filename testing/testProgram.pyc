@@ -1,0 +1,7 @@
+fn main():
+    message = str()
+
+    message = "this is a test"
+    print(message)
+
+main()

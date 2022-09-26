@@ -1,5 +1,6 @@
 mod util;
 mod functions;
+mod optimiser;
 
 use std::env;
 
@@ -8,6 +9,8 @@ fn main() {
     let file_contents: String = util::read_from_file(&files[1]);
 
     let mut file_processing_out = functions::replace_functions(file_contents);
+
+    file_processing_out = optimiser::optimise(file_processing_out);
 
     println!("{}", file_processing_out);
 
