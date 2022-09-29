@@ -5,6 +5,7 @@ from functions import checkFunctions, constructFunctions
 from optimiser import runOptimiser
 from variables import cobraVariables
 from imports import checkImports
+from displayTips import findWarnings
 from util import *
 
 def isTargetFile(target):
@@ -20,7 +21,17 @@ if __name__ == "__main__":
     else:
         targetFiles = getListOfFiles(target)
     
+    removeListDuplicates(targetFiles)
+
+    # create build dir
+    targetFileStruct = findSubDirectories(target)
+    for directory in targetFileStruct:
+        deleteDirectory(f"./dist/{directory}")
+        createDirectory(f"./dist/{directory}")
+
     for targetFile in targetFiles:
+        # only compile .pyc files
+        if not isTargetFile(targetFile): continue
 
         targetCode = readFile(targetFile)
 
@@ -41,4 +52,6 @@ if __name__ == "__main__":
         print("Code Compiled!")
         print(targetCode)
 
-        writeFile(targetFile.replace(".pyc", ".py"), targetCode)
+        findWarnings(targetCode, targetFile)
+
+        writeFile(f"./{targetFile.replace('.pyc', '.py')}", targetCode)

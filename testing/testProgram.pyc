@@ -8,7 +8,7 @@ fn main():
     const myName : str = "Grathium"
     myAge :int = int()
 
-    print("Please input your age")
+    print("Please input your age\n")
     myAge = input()
 
     const message: str = "this is a test"

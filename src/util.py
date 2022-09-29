@@ -14,6 +14,16 @@ def writeFile(filepath, contents):
     
     return True
 
+def displayTip(location = "", problem = "", description = "", fix = ""):
+    print()
+    print("--------------------")
+    print(f"Warning from {location}")
+    print(f"Currently Using {problem}")
+    print(f"This can be incorrect because {description}")
+    print(f"Suggestion: {fix}")
+    print()
+    return
+
 def getListOfFiles(dirName):
     # create a list of file and sub directories 
     # names in the given directory 
@@ -30,3 +40,39 @@ def getListOfFiles(dirName):
             allFiles.append(fullPath)
                 
     return allFiles
+
+def findSubDirectories(directory):
+    return [dI for dI in os.listdir(directory) if os.path.isdir(os.path.join(directory,dI))]
+
+def createDirectory(dirName):
+    if not os.path.exists(dirName):
+        os.makedirs(dirName)
+    else:
+        deleteDirectory(dirName)
+        os.makedirs(dirName)
+    
+    return True
+
+def deleteDirectory(dirName):
+    try:
+        os.rmdir(dirName)
+    except OSError as e:
+        print("Error: %s : %s" % (path_dir, e.strerror))
+        return False
+    
+    return True
+
+def deleteFile(fileName):
+    try:
+        os.remove(fileName)
+    except:
+        return False
+    
+    return True
+
+def removeListDuplicates(myList):
+    final_list = []
+    for num in myList:
+        if num not in final_list:
+            final_list.append(num)
+    return final_list
