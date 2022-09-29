@@ -7,26 +7,38 @@ from variables import cobraVariables
 from imports import checkImports
 from util import *
 
+def isTargetFile(target):
+    if ".pyc" in target: return True
+    if "." in target: throwError(message = "Target File Not Found. Ensure that your have the .pyc extension")
+    return False
+
 if __name__ == "__main__":
-    targetFile = sys.argv[1]
+    target = sys.argv[1]
 
-    targetCode = readFile(targetFile)
+    if isTargetFile(target):
+        targetFiles = [target]
+    else:
+        targetFiles = getListOfFiles(target)
+    
+    for targetFile in targetFiles:
 
-    targetCode = runOptimiser(targetCode)
+        targetCode = readFile(targetFile)
 
-    # check that code is valid
-    if not checkFunctions(targetCode): throwError(code = 2, message = "Error in Functions...")
+        targetCode = runOptimiser(targetCode)
 
-    variableAssignment = cobraVariables(targetCode)
-    if not variableAssignment[0]: throwError(code = 3, message = "Error in Variable Assignment...")
-    targetCode = variableAssignment[1]
+        # check that code is valid
+        if not checkFunctions(targetCode): throwError(code = 2, message = f"{targetFile} Functions Mismatched...")
 
-    if not checkImports(targetCode): throwError(code = 4, message = "Unused Imports...")
+        variableAssignment = cobraVariables(targetCode)
+        if not variableAssignment[0]: throwError(code = 3, message = f"{targetFile} in Variable Assignment...")
+        targetCode = variableAssignment[1]
 
-    # replace code
-    targetCode = constructFunctions(targetCode)
+        if not checkImports(targetCode): throwError(code = 4, message = f"{targetFile} Unused Imports...")
 
-    print("Code Compiled!")
-    print(targetCode)
+        # replace code
+        targetCode = constructFunctions(targetCode)
 
-    writeFile(targetFile.replace(".pyc", ".py"), targetCode)
+        print("Code Compiled!")
+        print(targetCode)
+
+        writeFile(targetFile.replace(".pyc", ".py"), targetCode)
