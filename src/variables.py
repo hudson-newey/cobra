@@ -1,5 +1,10 @@
 import re
 
+def cobraVariables(code):
+    variablesAreProper = checkVariableAssignments(code) and correctTypes(code)
+
+    return (variablesAreProper, removeCobraArtifacts(code))
+
 def checkVariableAssignments(code):
     constantFindRE = r"const ([a-zA-Z0-9]+)[: ]"
 
@@ -9,11 +14,12 @@ def checkVariableAssignments(code):
     
     for variable in constantVariables:
         constCheckRE = rf"{variable}[ ]*="
-        if (len(re.findall(constCheckRE, code)) > 0): return (code, False)
+        if (len(re.findall(constCheckRE, code)) > 0): return False
 
-    code = removeCobraArtifacts(code)
+    return True
 
-    return (code, True)
+def correctTypes(code):
+    return True
 
 def removeCobraArtifacts(code):
     constantFindRERaw = r"(const [a-zA-Z0-9]+)[: ]"

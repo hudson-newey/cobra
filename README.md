@@ -10,5 +10,6 @@ An abstraction of Python which supports stronger typing, error checking, defensi
     * Removes empty lines
     * Removes comments
     * Modifies functional assignments to be constants (where possible)
+* Checks for unused imports
 
 ### And it's all backwards compatible with Python & Python3! Just rename your filetype to `.pyc`!

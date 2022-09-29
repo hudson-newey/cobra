@@ -1,3 +1,9 @@
+# this is an unused import
+# when this line is uncommented, it should throw
+# error 4 (unused import)
+# import os
+from time import sleep
+
 fn main():
     const myName : str = "Grathium"
     myAge :int = int()
@@ -9,6 +15,7 @@ fn main():
 
     # this is a comment
     # message = "this is a test"
+    sleep(2)
     print(message)
 
 main()
