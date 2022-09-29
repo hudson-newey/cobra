@@ -41,9 +41,6 @@ def getListOfFiles(dirName):
                 
     return allFiles
 
-def findSubDirectories(directory):
-    return [dI for dI in os.listdir(directory) if os.path.isdir(os.path.join(directory,dI))]
-
 def createDirectory(dirName):
     if not os.path.exists(dirName):
         os.makedirs(dirName)

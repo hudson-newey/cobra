@@ -23,12 +23,6 @@ if __name__ == "__main__":
     
     removeListDuplicates(targetFiles)
 
-    # create build dir
-    targetFileStruct = findSubDirectories(target)
-    for directory in targetFileStruct:
-        deleteDirectory(f"./dist/{directory}")
-        createDirectory(f"./dist/{directory}")
-
     for targetFile in targetFiles:
         # only compile .pyc files
         if not isTargetFile(targetFile): continue
