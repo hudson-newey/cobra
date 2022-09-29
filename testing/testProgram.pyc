@@ -1,7 +1,14 @@
 fn main():
-    message = str()
+    const myName : str = "Grathium"
+    myAge :int = int()
 
-    message = "this is a test"
+    print("Please input your age")
+    myAge = input()
+
+    const message: str = "this is a test"
+
+    # this is a comment
+    # message = "this is a test"
     print(message)
 
 main()
