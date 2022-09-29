@@ -1,7 +1,14 @@
-fn main():
-    message = str()
+fn main():;
+    message: string = str();
 
-    message = "this is a test"
-    print(message)
+    const MYMESSAGE: string = "this is a test";
+    myPrint(MYMESSAGE + message);    print("high");
 
-main()
+fn myPrint(text: str):;
+    print(text);
+
+# this should trigger a warning;
+const myVariable1: string = "foo";
+const my_variable2: string = "bar";
+
+main();
