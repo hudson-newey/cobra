@@ -14,3 +14,5 @@ An abstraction of Python which supports stronger typing, error checking, defensi
 * Displays tips on how to improve your code quality
 
 ### And it's all backwards compatible with Python & Python3! Just rename your filetype to `.pyc`!
+  
+[Online Web Docs & Help](https://grathium-industries.github.io/posts/blog/cobra.html)
