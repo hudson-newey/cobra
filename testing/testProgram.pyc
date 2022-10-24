@@ -1,12 +1,12 @@
 # this is an unused import
 # when this line is uncommented, it should throw
 # error 4 (unused import)
-# import os
+import os
 from time import sleep
 
 fn main():
-    const myName : str = "Grathium"
-    myAge :int = int()
+    const myName: str = "Grathium"
+    myAge: int = int()
 
     print("Please input your age\n")
     myAge = input()
